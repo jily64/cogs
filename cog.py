@@ -3,7 +3,6 @@ from discord.ext import commands
 from discord import app_commands
 import json
 import asyncio
-print("loh")
 class cog1(commands.Cog):
 
     def __init__(self, bot: commands.Bot):
