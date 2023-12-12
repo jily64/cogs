@@ -9,7 +9,7 @@ class cog(commands.Cog):
     def __init__(self, bot: commands.Bot):
         self.bot = bot
 
-    @app_commands.command(name="help11", description="Узнай что я могу!")
+    @app_commands.command(name="help", description="Узнай что я могу!")
     async def help(self, interaction:discord.Interaction):
         emb = discord.Embed(title="Опаньки! Что это тут?", description="Нука давай посмотрим, что ты можешь потыкать :3", color=discord.Color.from_rgb(255, 0, 230))
         emb.add_field(name="Партнерская программа", value="Если у тебя есть наша партнерская программа, то ты можешь узнать, что ты можешь использовать!")
