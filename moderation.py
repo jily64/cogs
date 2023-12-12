@@ -28,7 +28,16 @@ class mod(commands.Cog):
                         data = json.load(f)
                     if select.values[0] == "Установить Прощание и приветствие":
                         class change_hm_modal(discord.ui.Modal, title="Время что то менять!"):
-                            bb = discord.ui.TextInput(
+                            channel = discord.ui.TextInput(
+                                label='Приветствие',
+                                style=discord.ChannelType.text,
+                                placeholder='Введите приветствие',
+                                required=False,
+                                max_length=500,
+                                default="Используй маркер {member} для выделения участника"
+                            )
+
+                            qq = discord.ui.TextInput(
                                 label='Приветствие',
                                 style=discord.TextStyle.short,
                                 placeholder='Введите приветствие',
@@ -37,7 +46,8 @@ class mod(commands.Cog):
                                 default="Используй маркер {member} для выделения участника"
                             )
 
-                            qq = discord.ui.TextInput(
+
+                            bb = discord.ui.TextInput(
                                 label='Прощание',
                                 style=discord.TextStyle.short,
                                 placeholder='Введите прощание',
@@ -58,6 +68,12 @@ class mod(commands.Cog):
                                 await interaction.response.send_message(f"{self.qq.value}\n\n{self.bb.value}")
                         await interaction.response.send_modal(change_hm_modal())
             await interaction.response.send_message(embed=emb, view=select_option())
+
+    @commands.Cog.listener()
+    async def on_member_join(self, member:discord.Member):
+        with open(f"servers/{member.guild.id}.json", encoding="utf-8") as f:
+            data = json.load(f)
+
 
 
 async def setup(bot: commands.Bot):
