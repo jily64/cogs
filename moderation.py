@@ -56,7 +56,7 @@ class mod(commands.Cog):
                                     }
 
                                 await interaction.response.send_message(f"{self.qq.value}\n\n{self.bb.value}")
-                        await interaction.response.send_modal(modal=change_hm_modal)
+                        await interaction.response.send_modal(change_hm_modal())
             await interaction.response.send_message(embed=emb, view=select_option())
 
 
