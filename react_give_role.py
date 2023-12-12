@@ -89,11 +89,5 @@ class rk(commands.Cog):
                 user = self.bot.get_guild(payload.guild_id).get_member(payload.user_id)
                 await user.remove_roles(role)
 
-
-
-
-
-
-
 async def setup(bot: commands.Bot):
     await bot.add_cog(rk(bot), guilds=bot.guilds)
