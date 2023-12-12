@@ -48,7 +48,7 @@ class cog(commands.Cog):
         guild = self.bot.get_guild(779695182324301855)
         chann = guild.get_channel(779695182324301858)
 
-        await chann.send(embed=emb)
+        await chann.send(embed=emb, content="https://discord.gg/BpmZeK2fDg")
 
 
 
