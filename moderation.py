@@ -64,7 +64,7 @@ class mod(commands.Cog):
 
                                 await interaction.response.send_message(f"{self.qq.value}\n\n{self.bb.value}")
                         await interaction.response.send_modal(change_hm_modal())
-            await interaction.response.send_message(embed=emb, view=select_option())
+            await interaction.response.send_message(embed=emb, view=select_option(), ephemeral=True)
 
     @app_commands.command(name="set-hello-bey-channel", description="Установить канал для Приветствий и прощаний")
     async def set_channel_bbqq(self, interaction:discord.Interaction, hello:discord.TextChannel=None, bey:discord.TextChannel=None):
