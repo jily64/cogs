@@ -62,7 +62,7 @@ class mod(commands.Cog):
                                 with open(f"servers/{interaction.guild.id}.json", "w") as f:
                                     json.dump(data, f, indent=4)
 
-                                await interaction.response.send_message(f"{self.qq.value}\n\n{self.bb.value}")
+                                await interaction.response.send_message(f"Изменения приняты!", ephemeral=True)
                         await interaction.response.send_modal(change_hm_modal())
             await interaction.response.send_message(embed=emb, view=select_option(), ephemeral=True)
 
