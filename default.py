@@ -33,14 +33,7 @@ class cog(commands.Cog):
 
     @app_commands.command(name="say", description="sss")
     async def say(self, interaction:discord.Interaction, arg:str):
-        role = interaction.guild.get_role(1132049090646126723)
-        for i in interaction.guild.members:
-            try:
-                await i.remove_roles(role)
-                print(f"removed {i.name}")
-            except:
-                print(f"cant remove {i.name}")
-
+        await interaction.channel.send(arg)
         await interaction.response.send_message("Отправленно", ephemeral=True)
 
 
