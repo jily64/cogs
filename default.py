@@ -35,7 +35,7 @@ class cog(commands.Cog):
     async def say(self, interaction:discord.Interaction, arg:str):
         mess = await interaction.channel.fetch_message(1184050915104276550)
         print(arg)
-        m = (f"## Выбери рекцию и получи роль для доступа к каналу!\n\n{self.bot.get_emoji(1132361021005250630)} - Доступ к NSFW каналу\n{self.bot.get_emoji(1144887982084603954)} - Доступ к каналу с OSU!")
+        m = (f"## Выбери рекцию и получи роль для доступа к каналу!\n\n{self.bot.get_emoji(1132361021005250630)} - Доступ к NSFW каналу\n{self.bot.get_emoji(1184053270180806759)} - Доступ к каналу с OSU!")
         await interaction.response.send_message("Отправленно", ephemeral=True)
         await mess.edit(content=m)
 
