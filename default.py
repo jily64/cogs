@@ -9,7 +9,7 @@ class cog(commands.Cog):
     def __init__(self, bot: commands.Bot):
         self.bot = bot
 
-    @app_commands.command(name="help", description="Узнай что я могу!")
+    @app_commands.command(name="help2", description="Узнай что я могу!")
     async def help(self, interaction:discord.Interaction):
         emb = discord.Embed(title="Опаньки! Что это тут?", description="Нука давай посмотрим, что ты можешь потыкать :3", color=discord.Color.from_rgb(255, 0, 230))
         emb.add_field(name="Партнерская программа", value="Если у тебя есть наша партнерская программа, то ты можешь узнать, что ты можешь использовать!")
@@ -18,6 +18,7 @@ class cog(commands.Cog):
         emb.add_field(name="Империя", value="Приветствую вождь! Вступай в нашу импперию Land.ADM!")
         emb.add_field(name="Другое", value="Авто-войс каналы, роли по реакциям")
         emb.add_field(name="Разработчики", value="Интересно узнать кто и как меня создавал?")
+
         emb.set_footer(text=f"L.A Guru - {interaction.guild.name}", icon_url=interaction.guild.icon)
 
         class select(discord.ui.View):

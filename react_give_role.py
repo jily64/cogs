@@ -61,7 +61,7 @@ class rk(commands.Cog):
             await interaction.response.send_message("Я не нашел такого сообщения(", ephemeral=True)
 
         with open(f"servers/{interaction.guild.id}.json", "w") as f:
-            json.dump(data, f)
+            json.dump(data, f, indent=4)
 
     @commands.Cog.listener()
     async def on_raw_reaction_add(self, payload: discord.RawReactionActionEvent):
