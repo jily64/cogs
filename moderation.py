@@ -50,7 +50,7 @@ class mod(commands.Cog):
                             async def on_submit(self, interaction:interaction.response):
                                 try:
                                     data["mod"]["bb"] = self.bb.value
-                                    data["mod"]["qq"] = self.bb.value
+                                    data["mod"]["qq"] = self.qq.value
                                 except:
                                     data["mod"] = {
                                         "hello_channel": None,
