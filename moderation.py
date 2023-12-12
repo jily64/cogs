@@ -19,14 +19,14 @@ class mod(commands.Cog):
 
 
                 opt = [
-                    discord.SelectOption(label="Установить Прощание и приветствие")
+                    discord.SelectOption(label="Установить прощание и приветствие")
                 ]
 
                 @discord.ui.select(placeholder="Выбери настройку", options=opt)
                 async def select_callback(self, interaction:discord.Interaction, select:discord.ui.Select):
                     with open(f"servers/{interaction.guild.id}.json", encoding="utf-8") as f:
                         data = json.load(f)
-                    if select.values[0] == "Установить Прощание и приветствие":
+                    if select.values[0] == "Установить прощание и приветствие":
                         class change_hm_modal(discord.ui.Modal, title="Время что то менять!"):
 
                             qq = discord.ui.TextInput(
