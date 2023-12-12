@@ -28,14 +28,6 @@ class mod(commands.Cog):
                         data = json.load(f)
                     if select.values[0] == "Установить Прощание и приветствие":
                         class change_hm_modal(discord.ui.Modal, title="Время что то менять!"):
-                            channel = discord.ui.TextInput(
-                                label='Приветствие',
-                                style=discord.ChannelType.text,
-                                placeholder='Введите приветствие',
-                                required=False,
-                                max_length=500,
-                                default="Используй маркер {member} для выделения участника"
-                            )
 
                             qq = discord.ui.TextInput(
                                 label='Приветствие',
@@ -61,10 +53,14 @@ class mod(commands.Cog):
                                     data["mod"]["qq"] = self.bb.value
                                 except:
                                     data["mod"] = {
-                                        "hb_channel": None,
+                                        "hello_channel": None,
+                                        "bb_channel": None,
                                         "bb": self.bb.value,
                                         "qq": self.qq.value
                                     }
+
+                                with open(f"servers/{interaction.guild.id}.json", "w") as f:
+                                    json.dump(data, f, indent=4)
 
                                 await interaction.response.send_message(f"{self.qq.value}\n\n{self.bb.value}")
                         await interaction.response.send_modal(change_hm_modal())
@@ -72,12 +68,33 @@ class mod(commands.Cog):
 
     @app_commands.command(name="set-hello-bey-channel", description="Установить канал для Приветствий и прощаний")
     async def set_channel_bbqq(self, interaction:discord.Interaction, hello:discord.TextChannel=None, bey:discord.TextChannel=None):
-        print("dd")
+        with open(f"servers/{interaction.guild.id}.json", encoding="utf-8") as f:
+            data = json.load(f)
+
+        try:
+            data["mod"]["hello_channel"] = hello.id
+            data["mod"]["bb_channel"] = bey.id
+        except:
+            data["mod"] = {
+                "hello_channel": hello.id,
+                "bb_channel": bey.id,
+                "bb": "",
+                "qq": ""
+            }
+        with open(f"servers/{interaction.guild.id}.json", "w") as f:
+            json.dump(data, f, indent=4)
 
     @commands.Cog.listener()
     async def on_member_join(self, member:discord.Member):
         with open(f"servers/{member.guild.id}.json", encoding="utf-8") as f:
             data = json.load(f)
+
+        try:
+            hello_message = member.mention.join(data["mod"]["qq"].split("{member}"))
+            channel = member.guild.get_channel(data["mod"]["hello_channel"])
+            await channel.send(hello_message)
+        except:
+            pass
 
 
 
