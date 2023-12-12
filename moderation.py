@@ -61,6 +61,7 @@ class mod(commands.Cog):
                                     data["mod"]["qq"] = self.bb.value
                                 except:
                                     data["mod"] = {
+                                        "hb_channel": None,
                                         "bb": self.bb.value,
                                         "qq": self.qq.value
                                     }
@@ -69,10 +70,16 @@ class mod(commands.Cog):
                         await interaction.response.send_modal(change_hm_modal())
             await interaction.response.send_message(embed=emb, view=select_option())
 
+    @app_commands.command(name="set-hello-bey-channel", description="Установить канал для Приветствий и прощаний")
+    async def set_channel_bbqq(self, interaction:discord.Interaction, hello:discord.TextChannel=None, bey:discord.TextChannel=None):
+        print("dd")
+
     @commands.Cog.listener()
     async def on_member_join(self, member:discord.Member):
         with open(f"servers/{member.guild.id}.json", encoding="utf-8") as f:
             data = json.load(f)
+
+
 
 
 
