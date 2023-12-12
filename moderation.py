@@ -72,15 +72,37 @@ class mod(commands.Cog):
             data = json.load(f)
 
         try:
-            data["mod"]["hello_channel"] = hello.id
-            data["mod"]["bb_channel"] = bey.id
+            try:
+                data["mod"]["hello_channel"] = hello.id
+            except:
+                pass
+            try:
+                data["mod"]["bb_channel"] = bey.id
+            except:
+                pass
         except:
-            data["mod"] = {
-                "hello_channel": hello.id,
-                "bb_channel": bey.id,
-                "bb": "",
-                "qq": ""
-            }
+            try:
+                data["mod"] = {
+                    "hello_channel": hello.id,
+                    "bb_channel": bey.id,
+                    "bb": "",
+                    "qq": ""
+                }
+            except:
+                try:
+                    data["mod"] = {
+                        "hello_channel": hello.id,
+                        "bb_channel": None,
+                        "bb": "",
+                        "qq": ""
+                    }
+                except:
+                    data["mod"] = {
+                        "hello_channel": None,
+                        "bb_channel": bey.id,
+                        "bb": "",
+                        "qq": ""
+                    }
         with open(f"servers/{interaction.guild.id}.json", "w") as f:
             json.dump(data, f, indent=4)
 
