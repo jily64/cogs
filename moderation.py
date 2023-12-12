@@ -70,43 +70,43 @@ class mod(commands.Cog):
     async def set_channel_bbqq(self, interaction:discord.Interaction, hello:discord.TextChannel=None, bey:discord.TextChannel=None):
         with open(f"servers/{interaction.guild.id}.json", encoding="utf-8") as f:
             data = json.load(f)
-
-        try:
+        if interaction.user.guild_permissions.administrator:
             try:
-                data["mod"]["hello_channel"] = hello.id
-            except:
-                pass
-            try:
-                data["mod"]["bb_channel"] = bey.id
-            except:
-                pass
-        except:
-            try:
-                data["mod"] = {
-                    "hello_channel": hello.id,
-                    "bb_channel": bey.id,
-                    "bb": "",
-                    "qq": ""
-                }
+                try:
+                    data["mod"]["hello_channel"] = hello.id
+                except:
+                    pass
+                try:
+                    data["mod"]["bb_channel"] = bey.id
+                except:
+                    pass
             except:
                 try:
                     data["mod"] = {
                         "hello_channel": hello.id,
-                        "bb_channel": None,
-                        "bb": "",
-                        "qq": ""
-                    }
-                except:
-                    data["mod"] = {
-                        "hello_channel": None,
                         "bb_channel": bey.id,
                         "bb": "",
                         "qq": ""
                     }
-        with open(f"servers/{interaction.guild.id}.json", "w") as f:
-            json.dump(data, f, indent=4)
+                except:
+                    try:
+                        data["mod"] = {
+                            "hello_channel": hello.id,
+                            "bb_channel": None,
+                            "bb": "",
+                            "qq": ""
+                        }
+                    except:
+                        data["mod"] = {
+                            "hello_channel": None,
+                            "bb_channel": bey.id,
+                            "bb": "",
+                            "qq": ""
+                        }
+            with open(f"servers/{interaction.guild.id}.json", "w") as f:
+                json.dump(data, f, indent=4)
 
-        await interaction.response.send_message("Изменения приняты!", ephemeral=True)
+            await interaction.response.send_message("Изменения приняты!", ephemeral=True)
 
     @commands.Cog.listener()
     async def on_member_join(self, member: discord.Member):
