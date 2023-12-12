@@ -84,6 +84,8 @@ class mod(commands.Cog):
         with open(f"servers/{interaction.guild.id}.json", "w") as f:
             json.dump(data, f, indent=4)
 
+        await interaction.response.send_message("Изменения приняты!", ephemeral=True)
+
     @commands.Cog.listener()
     async def on_member_join(self, member:discord.Member):
         with open(f"servers/{member.guild.id}.json", encoding="utf-8") as f:
