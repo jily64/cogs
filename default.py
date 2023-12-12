@@ -36,6 +36,22 @@ class cog(commands.Cog):
         print(arg)
 
 
+    @commands.command()
+    async def ads(self, ctx):
+        la = self.bot.get_guild(1005146118054756352)
+        emb = discord.Embed(title="Опача! Рекламка значит...", color = discord.Color.from_rgb(244, 169, 0))
+        emb.add_field(name="Приятные люди", value="На нашем сервере есть прекрасные люди, с которыми можно спокойно общаться на различные темы!")
+        emb.add_field(name="Хорошая администрация", value="У нас прекрасная администрация, которая поможет вам в любой ситуации!")
+        emb.add_field(name="Не с кем поиграть?", value="У нас ты найдешь людей, с которыми ты сможешь поиграть в разные игры. От бравл страса и до Porta или других серий!")
+        emb.set_footer(text="Владелец проекта - U4rce GDev", icon_url=la.icon)
+
+        guild = self.bot.get_guild(779695182324301855)
+        chann = guild.get_channel(779695182324301858)
+
+        await chann.send(embed=emb)
+
+
+
 
 
 
