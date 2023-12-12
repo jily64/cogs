@@ -25,7 +25,7 @@ class cog(commands.Cog):
             opt = [
                 discord.SelectOption(label="Зиза Лох")
             ]
-            @discord.ui.select(placeholder="Зацени ебейшие описания", options=opt)
+            @discord.ui.select(placeholder="Ожидайте Следующих обновлений!", options=opt)
             async def select_callback(self, interaction:discord.Interaction, select):
                 print("ddd")
 
