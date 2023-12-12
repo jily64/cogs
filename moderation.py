@@ -87,13 +87,25 @@ class mod(commands.Cog):
         await interaction.response.send_message("Изменения приняты!", ephemeral=True)
 
     @commands.Cog.listener()
-    async def on_member_join(self, member:discord.Member):
+    async def on_member_join(self, member: discord.Member):
         with open(f"servers/{member.guild.id}.json", encoding="utf-8") as f:
             data = json.load(f)
 
         try:
             hello_message = member.mention.join(data["mod"]["qq"].split("{member}"))
             channel = member.guild.get_channel(data["mod"]["hello_channel"])
+            await channel.send(hello_message)
+        except:
+            pass
+
+    @commands.Cog.listener()
+    async def on_member_remove(self, member: discord.Member):
+        with open(f"servers/{member.guild.id}.json", encoding="utf-8") as f:
+            data = json.load(f)
+
+        try:
+            hello_message = member.mention.join(data["mod"]["bb"].split("{member}"))
+            channel = member.guild.get_channel(data["mod"]["bb_channel"])
             await channel.send(hello_message)
         except:
             pass
