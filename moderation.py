@@ -27,14 +27,14 @@ class mod(commands.Cog):
                     with open(f"servers/{interaction.guild.id}.json", encoding="utf-8") as f:
                         data = json.load(f)
                     if select.values[0] == "Установить Прощание и приветствие":
-                        class change_hm_modal(discord.ui.Modal, title="Время что то менять!", description="Используй маркер {member} для выделения участника"):
+                        class change_hm_modal(discord.ui.Modal, title="Время что то менять!"):
                             bb = discord.ui.TextInput(
                                 label='Приветствие',
                                 style=discord.TextStyle.short,
                                 placeholder='Введите приветствие',
                                 required=False,
                                 max_length=500,
-                                default=select.values[0]
+                                default="Используй маркер {member} для выделения участника"
                             )
 
                             qq = discord.ui.TextInput(
@@ -43,7 +43,7 @@ class mod(commands.Cog):
                                 placeholder='Введите прощание',
                                 required=False,
                                 max_length=500,
-                                default=select.values[0]
+                                default="Используй маркер {member} для выделения участника"
                             )
                             async def on_submit(self, interaction:interaction.response):
                                 try:
