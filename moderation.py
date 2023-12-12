@@ -131,6 +131,5 @@ class mod(commands.Cog):
             await channel.send(hello_message)
         except:
             pass
-
 async def setup(bot: commands.Bot):
     await bot.add_cog(mod(bot), guilds=bot.guilds)
