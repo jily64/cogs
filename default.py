@@ -33,7 +33,9 @@ class cog(commands.Cog):
 
     @app_commands.command(name="say", description="sss")
     async def say(self, interaction:discord.Interaction, arg:str):
-        await interaction.channel.send(arg)
+        mess = interaction.channel.fetch_message(1184050915104276550)
+        print(arg)
+        m = (f"Выбери рекцию и получи роль для доступа к каналу!")
         await interaction.response.send_message("Отправленно", ephemeral=True)
 
 
