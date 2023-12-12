@@ -24,8 +24,8 @@ class mod(commands.Cog):
 
                 @discord.ui.select(placeholder="Выбери настройку", options=opt)
                 async def select_callback(self, interaction:discord.Interaction, select:discord.ui.Select):
-                    with open(f"servers/{interaction.guild.id}.json") as f:
-                        data = json.load(f, encoding="utf-8")
+                    with open(f"servers/{interaction.guild.id}.json", encoding="utf-8") as f:
+                        data = json.load(f)
                     if select.values[0] == "Установить Прощание и приветствие":
                         class change_hm_modal(discord.ui.Modal, title="Время что то менять!", description="Используй маркер {member} для выделения участника"):
                             bb = discord.ui.TextInput(
