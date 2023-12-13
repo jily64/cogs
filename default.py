@@ -103,8 +103,8 @@ class cog(commands.Cog):
         emb.add_field(name="Не с кем поиграть?", value="У нас ты найдешь людей, с которыми ты сможешь поиграть в разные игры. От бравл страса и до Porta или других серий!")
         emb.set_footer(text="Владелец проекта - U4rce GDev", icon_url=la.icon)
 
-        guild = self.bot.get_guild(779695182324301855)
-        chann = guild.get_channel(779695182324301858)
+        guild = self.bot.get_guild(777455887715008582)
+        chann = guild.get_channel(1179821694056157255)
 
         await chann.send(embed=emb, content="https://discord.gg/BpmZeK2fDg")
 
