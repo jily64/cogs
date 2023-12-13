@@ -39,7 +39,7 @@ class verif(commands.Cog):
                             await interaction.response.send_message("Участник подтвержден!", ephemeral=True)
                         except:
                             await interaction.response.send_message("Ошибка! Либо у вас не настроены роли, либо просто ошибка.", ephemeral=True)
-                await interaction.send_modal(user_id_modal())
+                await interaction.response.send_modal(user_id_modal())
 
             @discord.ui.button(label="Девочка")
             async def female_callback(self, interaction:discord.Interaction, button):
