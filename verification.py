@@ -81,7 +81,7 @@ class verif(commands.Cog):
         data["verify_male"] = male.id
         data["verify_female"] = female.id
 
-        with open(f"servers/{interaction.guild.id}.json") as f:
+        with open(f"servers/{interaction.guild.id}.json", "w") as f:
             json.dump(data, f, indent=4)
 
         await interaction.response.send_message("Изменения приняты!", ephemeral=True)
