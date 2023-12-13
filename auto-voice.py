@@ -101,36 +101,39 @@ class auto_voice(commands.Cog):
 
     @commands.Cog.listener()
     async def on_voice_state_update(self, member: discord.Member, before: discord.VoiceState, after:discord.VoiceState):
-        if after.channel is not None:
-            with open(f"servers/{after.channel.guild.id}.json", encoding="utf-8") as f:
-                data = json.load(f)
-
-            if after.channel.id == data["auto_voice_creation_channel"] and data["auto_voice_creation"] == True:
-                print("create")
-
-                if member.activity == None:
-                    activity = "Без Активности"
-                else:
-                    acticity = member.activity.name
-
-                name = member.name.join(activity.join(data["auto_voice_name"].split("{activity}")).split("{member}"))
-                guild = self.bot.get_guild(after.channel.guild.id)
-                cat = guild.get_channel(after.channel.category.id)
-                channel = await guild.create_voice_channel(name=name, category=cat, position=after.channel.position)
-                await member.move_to(channel)
-
-                self.used.append(after.channel.id)
-
-        if before.channel is not None:
-            if before.channel.id in self.used:
-                with open(f"servers/{before.channel.guild.id}.json", encoding="utf-8") as f:
+        try:
+            if after.channel is not None:
+                with open(f"servers/{after.channel.guild.id}.json", encoding="utf-8") as f:
                     data = json.load(f)
 
-                if len(before.channel.members) == 0:
-                    await before.channel.delete()
-                    self.used.remove(before.channel.id)
-                else:
-                    pass
+                if after.channel.id == data["auto_voice_creation_channel"] and data["auto_voice_creation"] == True:
+                    print("create")
+
+                    if member.activity == None:
+                        activity = "Без Активности"
+                    else:
+                        acticity = member.activity.name
+
+                    name = member.name.join(activity.join(data["auto_voice_name"].split("{activity}")).split("{member}"))
+                    guild = self.bot.get_guild(after.channel.guild.id)
+                    cat = guild.get_channel(after.channel.category.id)
+                    channel = await guild.create_voice_channel(name=name, category=cat, position=after.channel.position)
+                    await member.move_to(channel)
+
+                    self.used.append(after.channel.id)
+
+            if before.channel is not None:
+                if before.channel.id in self.used:
+                    with open(f"servers/{before.channel.guild.id}.json", encoding="utf-8") as f:
+                        data = json.load(f)
+
+                    if len(before.channel.members) == 0:
+                        await before.channel.delete()
+                        self.used.remove(before.channel.id)
+                    else:
+                        pass
+        except:
+            pass
 
 
 async def setup(bot: commands.Bot):
