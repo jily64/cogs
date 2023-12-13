@@ -67,6 +67,8 @@ class verif(commands.Cog):
 
                 await interaction.send_modal(user_id_modal())
 
+        await interaction.response.send_message(embed=emb, view=buttons(), ephemeral=True)
+
 
     @app_commands.command(name="verify-roles", description="Установка ролей для верификации")
     async def verify_set_roles(self, interaction:discord.Interaction, female:discord.Role, male:discord.Role):
