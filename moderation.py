@@ -11,7 +11,7 @@ class mod(commands.Cog):
 
     @app_commands.command(name="modaretion-settings", description="Настройка модерации")
     async def mod_settings(self, interaction:discord.Interaction):
-        emb = discord.Embed(title="Настройки модерации")
+        emb = discord.Embed(title="Настройки модерации", color=discord.Color.from_rgb(244, 169, 0))
         emb.add_field(name="Приветствия и прощания", value="Давай настроим, как будем встречать и прощаться с участниками!")
 
         if interaction.user.guild_permissions.administrator:

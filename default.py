@@ -41,7 +41,14 @@ class cog(commands.Cog):
                                          color=discord.Color.from_rgb(255, 0, 230))
                     emb2.add_field(name="/выдача", value="Установить роль для рекции поставленной под определенным сообщением")
                     emb2.add_field(name="/очистить-сообщение", value="Убарть все реакции с назначеными ролями с сообщения")
+
                     emb2.add_field(name="/say", value="Сказать от имени бота (на некоторых серверах недоступно)", inline=False)
+
+                    emb2.add_field(name="/канал-для-создания-приватки", value="Назначить канал для приваток")
+                    emb2.add_field(name="/включить-выключить-приватки", value="Вы можете включить или выключить данную функцию (автоматически включается при назначении канала)")
+                    emb2.add_field(name="/добавить-войс-исключение", value="Во время бета теста, бот может немного пошалить, обезопасьте себя этой командой", inline=False)
+                    emb2.add_field(name="/изменить-названия-приваток", value="Измените название создаваемого канала")
+
                     emb2.set_footer(text=f"L.A Guru - {interaction.guild.name}", icon_url=interaction.guild.icon)
 
                 elif select.values[0] == "Разработчики":
@@ -111,10 +118,8 @@ class cog(commands.Cog):
                 for j in i.text_channels:
                     print(j.name)
                     try:
-                        emb = discord.Embed(title="Вышло новое обновление! (1.0.3)", color=discord.Color.from_rgb(244, 169, 0))
-                        emb.add_field(name="Обновление комманды /help", value="еперь доступны подсказки по команда, которые сейчас работают в боте")
-                        emb.add_field(name="Фиксы РСР и протоколов обновлений.", value="Иногда случались проблемы с обновлением команд на некоторых серверах. Мы это исправили!")
-                        emb.add_field(name="Добавлена команда /server-info", value="Подробнее в /help; Модерация")
+                        emb = discord.Embed(title="Вышло новое обновление! (1.0.4)", color=discord.Color.from_rgb(244, 169, 0))
+                        emb.add_field(name="Теперь есть приватки!", value="Теперь ваши пользователи могу создавать личные каналы! Как их настроить, читайте в /help; Разное")
                         emb.set_footer(text=f"L.A Guru - {i.name}", icon_url=i.icon)
                         await j.send(embed=emb)
                         break
