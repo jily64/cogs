@@ -112,7 +112,7 @@ class auto_voice(commands.Cog):
                     if member.activity == None:
                         activity = "Без Активности"
                     else:
-                        acticvity = member.activity.name
+                        activity = member.activity.name
 
                     name = member.name.join(activity.join(data["auto_voice_name"].split("{activity}")).split("{member}"))
                     guild = self.bot.get_guild(after.channel.guild.id)
