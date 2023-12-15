@@ -108,18 +108,38 @@ class cog(commands.Cog):
 
         await chann.send(embed=emb, content="https://discord.gg/BpmZeK2fDg")
 
-
-
     @app_commands.command(name="send_update", description="send update info")
-    async def send_update_info(self, interaction:discord.Interaction):
+    async def send_update_info(self, interaction: discord.Interaction):
         print(len(self.bot.guilds))
         if interaction.user.id == 727210460356673607:
             for i in self.bot.guilds:
                 for j in i.text_channels:
                     print(j.name)
                     try:
-                        emb = discord.Embed(title="Вышло новое обновление! (1.0.4)", color=discord.Color.from_rgb(244, 169, 0))
-                        emb.add_field(name="Теперь есть приватки!", value="Теперь ваши пользователи могу создавать личные каналы! Как их настроить, читайте в /help; Разное")
+                        emb = discord.Embed(title="Вышло новое обновление! (1.0.4)",
+                                            color=discord.Color.from_rgb(244, 169, 0))
+                        emb.add_field(name="Теперь есть приватки!",
+                                      value="Теперь ваши пользователи могу создавать личные каналы! Как их настроить, читайте в /help; Разное")
+                        emb.set_footer(text=f"L.A Guru - {i.name}", icon_url=i.icon)
+                        await j.send(embed=emb)
+                        break
+                    except Exception as e:
+                        print(e)
+
+                print(i.name)
+
+    @app_commands.command(name="send_an", description="send info")
+    async def send_update_info(self, interaction: discord.Interaction):
+        print(len(self.bot.guilds))
+        if interaction.user.id == 727210460356673607:
+            for i in self.bot.guilds:
+                for j in i.text_channels:
+                    print(j.name)
+                    try:
+                        emb = discord.Embed(title="Обьявление!",
+                                            color=discord.Color.from_rgb(244, 169, 0), description="Уважаемые админыи участники серверов, сегодня будуут проводиться работы на сервере, поэтому бот будет не на долго выключен.\nСпасибо за понимание!")
+                        emb.add_field(name="Информация",
+                                      value="Плановое время 22.15 - 3.00 (МСК)")
                         emb.set_footer(text=f"L.A Guru - {i.name}", icon_url=i.icon)
                         await j.send(embed=emb)
                         break
