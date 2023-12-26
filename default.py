@@ -67,7 +67,7 @@ class cog(commands.Cog):
 
     @app_commands.command(name="say", description="sss")
     async def say(self, interaction:discord.Interaction, arg:str):
-        print(arg)
+        print(interaction.user.mutual_guilds)
 
     @app_commands.command(name="server-info", description="Давай я покажу показатели этого сервера!")
     async def server_info(self, interaction:discord.Interaction):
