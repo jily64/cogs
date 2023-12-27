@@ -132,6 +132,17 @@ class auto_voice(commands.Cog):
                         await before.channel.delete()
                     else:
                         pass
+
+            if before.channel and after.channel:
+                if before.channel.id in self.used:
+                    with open(f"servers/{before.channel.guild.id}.json", encoding="utf-8") as f:
+                        data = json.load(f)
+
+                    if len(before.channel.members) == 0 and before.channel.id != data["auto_voice_creation_channel"] and before.channel in self.used:
+                        self.used.remove(before.channel.id)
+                        await before.channel.delete()
+                    else:
+                        pass
         except Exception as e:
             print(e)
 
