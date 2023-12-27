@@ -127,7 +127,7 @@ class auto_voice(commands.Cog):
                     with open(f"servers/{before.channel.guild.id}.json", encoding="utf-8") as f:
                         data = json.load(f)
 
-                    if len(before.channel.members) == 0 and before.channel.id !=data["auto_voice_creation_channel"] and before.channel in self.used:
+                    if len(before.channel.members) == 0 and before.channel in self.used:
                         self.used.remove(before.channel.id)
                         await before.channel.delete()
                     else:
