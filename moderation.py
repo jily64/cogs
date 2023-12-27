@@ -117,6 +117,10 @@ class mod(commands.Cog):
             hello_message = member.mention.join(data["mod"]["qq"].split("{member}"))
             channel = member.guild.get_channel(data["mod"]["hello_channel"])
             await channel.send(hello_message)
+
+            if member.guild.id == 1201952169012760656:
+                role = member.guild.get_role(1201963968894345216)
+                await member.add_roles(role)
         except:
             pass
 
@@ -131,5 +135,6 @@ class mod(commands.Cog):
             await channel.send(hello_message)
         except:
             pass
+
 async def setup(bot: commands.Bot):
     await bot.add_cog(mod(bot), guilds=bot.guilds)
