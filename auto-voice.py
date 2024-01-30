@@ -114,7 +114,7 @@ class auto_voice(commands.Cog):
                     else:
                         activity = member.activity.name
 
-                    name = member.display_name.join(activity.join(data["auto_voice_name"].split("{activity}")).split("{member}"))
+                    name = member.global_name.join(activity.join(data["auto_voice_name"].split("{activity}")).split("{member}"))
                     guild = self.bot.get_guild(after.channel.guild.id)
                     cat = guild.get_channel(after.channel.category.id)
                     channel = await guild.create_voice_channel(name=name, category=cat, position=after.channel.position)
