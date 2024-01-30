@@ -122,7 +122,7 @@ class auto_voice(commands.Cog):
 
                     self.used.append(after.channel.id)
 
-            if before.channel is not None:
+            elif before.channel is not None:
                 if before.channel.id in self.used:
                     with open(f"servers/{before.channel.guild.id}.json", encoding="utf-8") as f:
                         data = json.load(f)
@@ -134,7 +134,7 @@ class auto_voice(commands.Cog):
                     else:
                         pass
 
-            if before.channel and after.channel:
+            elif before.channel and after.channel:
                 if before.channel.id in self.used:
                     with open(f"servers/{before.channel.guild.id}.json", encoding="utf-8") as f:
                         data = json.load(f)
